@@ -5,6 +5,35 @@ import time
 
 """
 def browse(name):
+  info = {
+    "anoboy":{
+      "name":"anoboy", 
+      "url":"http://anoboy.ninja",
+      "link":".home_index>a",
+      "title":"h3"
+    },
+    "bstation":{
+      "name":"bstation", 
+      "url":"https://www.bilibili.tv/id/timeline",
+      "link":".timeline.timeline--today ul.timeline__content a.bstar-video-card__title-text", 
+      "title":""
+    },
+  }
+  selected = parser.web(info[name]['url'],info[name]['link'])
+  
+  for hyperlink in selected:
+    judul = hyperlink.get_text()
+    if info[name]['title'] != "":
+      judul = hyperlink.find(info[name]['title']).get_text()
+    link  = hyperlink['href']
+    print(f"{judul[:50]:50} | {link}")
+
+
+  #file  = helpers.terbaru(nama+".txt")
+  
+
+"""
+old code plus test
   if name == "anoboy":
     link,selector = "http://anoboy.ninja", ".home_index a .amv .amvj .ibox1 "
   elif name == "bstation":
@@ -25,6 +54,9 @@ def browse(name):
       link = hyperlink['href']
       print ("{:<103} >>>> {:<10} ".format( str(judul.get_text()),str(link)))
     return ""
+"""
+  
+"""
   check = parser.web(link,selector)
   print(f"Update From {name}")
   file = helpers.terbaru(name+".txt")
@@ -40,3 +72,4 @@ def browse(name):
   else:
     print(f"No Update From {name}")
   print("\n")
+"""
