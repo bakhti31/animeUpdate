@@ -1,5 +1,18 @@
-from library import parser,helpers
+from library import helpers
 import time
+"""
+  Downloading Video File from zippy link
+def downloadZippy(link="https://www54.zippyshare.com/v/lINUXLQG/file.html"):
+    print(link)
+    files = helpers.web(link,"#dl.button")
+    print(files)
+
+
+
+"""
+
+
+
 """
   Visiting a sites and getting the values
 
@@ -8,7 +21,7 @@ def browse(name):
   info = {
     "anoboy":{
       "name":"anoboy", 
-      "url":"http://anoboy.ninja",
+      "url":"http://anoboy.zone",
       "link":".home_index>a",
       "title":"h3"
     },
@@ -19,16 +32,21 @@ def browse(name):
       "title":""
     },
   }
-  selected = parser.web(info[name]['url'],info[name]['link'])
-  
+  selected = helpers.web(info[name]['url'],info[name]['link'])
+  results = []  
   for hyperlink in selected:
     judul = hyperlink.get_text()
     if info[name]['title'] != "":
       judul = hyperlink.find(info[name]['title']).get_text()
     link  = hyperlink['href']
-    print(f"{judul[:50]:50} | {link}")
-
-
+    last = helpers.terbaru(name+".txt")
+    if(judul == last):
+      return []
+    helpers.tulis('a',name+".txt",judul)
+    #print(f"{judul[:50]:50} | {link}")
+    animation = judul,link
+    results.append(animation)
+  return results
   #file  = helpers.terbaru(nama+".txt")
   
 

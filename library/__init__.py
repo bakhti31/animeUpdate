@@ -1,1 +1,1 @@
-from . import helpers,idledetector,parser
+from . import helpers,idledetector,Downloader
