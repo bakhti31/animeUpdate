@@ -1,0 +1,18 @@
+animeUpdate is a scraping python project, this project scraping the anoboy and bstation website
+
+file description
+
+
+
+main.py                   | Main Program()
+
+library                   | Folder Built-in Module to support core package
+- helpers                 | Module to support core(Files and opening the browser)
+- idledetector            | Module to detect Keboard pressing(this is AFK detector)
+- parser                  | Module to parsing html from a link(can into helpers)
+
+anime                     | Folder Core Package the main feature in here
+- assistant               | Module to interactive cli (Doesn't need this')
+- site                    | Core to process the data information
+
+docs                      | to save data and documentation
