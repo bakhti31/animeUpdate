@@ -2,7 +2,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-def web(link,selector):
+def web(link,selector=""):
   """
   return BeautifulSoup with selected tags
     Parameters :
@@ -19,6 +19,8 @@ def web(link,selector):
   response = requests.get(link)
   if response.status_code == 200:
     soup = BeautifulSoup(response.content,"html.parser")
+    if selector == "":
+      return soup
     return soup.select(selector)
   else:
     return false
